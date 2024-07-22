@@ -5,7 +5,6 @@ include_once("connections/connections.php");
 
 $conn = connection();
 //test update code
-// test in hereasdasd
 
 if(isset($_POST['submit'])){
 
