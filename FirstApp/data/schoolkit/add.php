@@ -13,8 +13,6 @@ if(isset($_POST['submit'])){
 $fname = $_POST['firstname'];
 $lname = $_POST['lastname'];
 $gender = $_POST['gender'];
-
-    $sql = "INSERT INTO 'student_list' ( `first_name`, `last_name`, `gender`) VALUES ('$fname','$lname','$gender')";
  
 $sql = "INSERT INTO student_list ( `first_name`, `last_name`, `gender`) VALUES ('$fname','$lname','$gender')";
 
