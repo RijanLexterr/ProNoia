@@ -1,0 +1,5 @@
+
+showmessage(inMessage)
+{
+    alert(inMessage);
+}
