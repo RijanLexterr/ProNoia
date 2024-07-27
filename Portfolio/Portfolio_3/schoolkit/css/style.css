@@ -1,0 +1,132 @@
+
+
+
+.login-container {
+margin: 0 auto;
+width: 50%;
+margin-top: 8vh;
+
+}
+
+body{
+
+    font-family: "Arial";
+  }
+  h1{
+    text-align: center;
+  }
+  table{
+  
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align:left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
+
+  .message{
+    width:100%;
+    padding:1rem;
+    
+    
+      }
+    
+  .message.success{
+    background: #4bb838;
+    border-left: 6px solid #069b1e;
+    color: #eff2ed;
+  
+  }
+
+  .message.info{
+
+    background: #3864db;
+    border-left: 6px solid #03093a;
+    color: #ddd;
+  }
+
+/* end message */
+
+  .wrapper{
+padding: 0 2rem 0 2rem;
+
+  }
+
+  .search-container{
+
+    width:30%;
+    padding-bottom: 1rem;
+  }
+  .search-input{
+
+    padding:10px;
+    font-size:17px;
+    border: 1px solid #ddd;
+    float: left;
+    width: 80%;
+    background: white;
+
+
+  }
+
+  .search-button{
+    float:left;
+    width: 20%;
+    padding: 10px;
+    background: rgb(2, 110, 165);
+    color: white;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    border-left: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+  
+  }
+
+  .button-container{
+    margin:0;
+    float: right;
+    padding: 1rem 0 2rem 0;
+  }
+
+  .button-container a{
+float: left;
+border: 1px solid rgb(2,94,139);
+background: rgb(2,110,165);
+padding: 8px 10px 8px 10px;
+color: white;
+text-decoration: none;
+letter-spacing: 2px;
+
+}
+
+.button-container a:hover{
+background: rgb(15, 40, 53);
+
+}
+
+.button-small{
+border:none;
+background: rgb(2,110,165);
+color: white;
+text-decoration: none;
+padding: 3px 5px 3px 5px;
+font-size: 12px;
+
+
+
+}
+
+.button-small:hover{
+
+  background: rgb(15, 40, 53);
+
+}

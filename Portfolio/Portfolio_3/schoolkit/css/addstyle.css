@@ -1,0 +1,48 @@
+.form-update {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 8vh;
+    
+    }
+.form-update label{
+
+        display:block;
+        font-size: 22px;
+        margin-top: 1rem;
+    
+    }
+
+.form-update input{
+
+    font-size: 22px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #8888;
+}
+
+.form-update input[type="submit"]{
+
+    width:100%;
+    letter-spacing: 6px;
+    border-radius: 4px;
+    margin-top: 2rem;
+    font-size: 32px;
+    padding:1rem;
+    background-color: rgb(2,110,165);
+    border:None;
+    color: white;
+    cursor:pointer;
+}
+
+.form-update a{
+
+width: 30%;
+letter-spacing: 3px;
+text-decoration: none;
+font-size: 25px;
+
+
+
+}
