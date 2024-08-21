@@ -12,6 +12,7 @@ if(isset($_POST['submit'])){
   try {
     $Username = $_POST['Username'];
     $Date =  date("Y-m-d H:i:s");
+   
     $AttendanceDate =  date("Y-m-d H:i:s");
     
    
