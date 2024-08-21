@@ -1,0 +1,14 @@
+CREATE TABLE `sli`.`user` 
+( `UserID` INT NOT NULL AUTO_INCREMENT, 
+`Name` TEXT NOT NULL , 
+`Username` TEXT NOT NULL , 
+`IsActive` BIT NOT NULL , 
+PRIMARY KEY (`UserID`)) ENGINE = InnoDB;
+
+
+
+CREATE TABLE `sli`.`attendance` 
+( `AttendanceId` INT NOT NULL AUTO_INCREMENT, 
+`Username` TEXT NOT NULL , 
+`Date` DATE NOT NULL , 
+PRIMARY KEY (`AttendanceId`)) ENGINE = InnoDB;
