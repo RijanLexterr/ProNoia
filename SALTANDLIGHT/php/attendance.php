@@ -10,15 +10,12 @@ if(isset($_POST['submit'])){
 
 
   try {
-    $Username = $_POST['Username'];
+    $Username = $_POST['Username'];   
+    $AttendanceDate =  date("Y-m-d H:i:s");    
    
-    $AttendanceDate =  date("Y-m-d H:i:s");
-    
-   
+    //Check if current day is sunday
     if( date('D') == 'Sun')
     { 
-
-
       $sql = "INSERT INTO attendance ( `Username`, `AttendanceDate`) VALUES ('$Username','$AttendanceDate')";
       $conn->query($sql) or die ($conn->error);
     
@@ -88,6 +85,7 @@ if(isset($_POST['submit'])){
       
       <input type="submit" name="submit" class="btn btn-label" value="Add">
     </div>
+     
       
     </div>
   </form>
