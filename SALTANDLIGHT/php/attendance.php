@@ -11,7 +11,6 @@ if(isset($_POST['submit'])){
 
   try {
     $Username = $_POST['Username'];
-    $Date =  date("Y-m-d H:i:s");
    
     $AttendanceDate =  date("Y-m-d H:i:s");
     
@@ -33,9 +32,6 @@ if(isset($_POST['submit'])){
     }
 
      
-    $sql = "INSERT INTO user ( `Username`, `Date`) VALUES ('$Username','$Date')";
-    //tesst
-    $conn->query($sql) or die ($conn->error);
     
     
     }
@@ -60,12 +56,6 @@ if(isset($_POST['submit'])){
 
 </head>
 <body>
-
-
-
-
-
-
 
 <div class="form-container">
   <form class="form" action="" method="post">
@@ -94,22 +84,10 @@ if(isset($_POST['submit'])){
         <input placeholder="" class="input" type="text"  name="Username" id="Username" required/>
         <span class="placeholder">Username</span>
       </div>
-      <button class="btn" type="button">
-        <label class="btn-label" for="toggle-checkbox">Continue</label>
-      </button>
     
       
       <input type="submit" name="submit" class="btn btn-label" value="Add">
     </div>
-    <div class="password-card">
-      <div class="field-container">
-        <input placeholder="" class="input" type="password" />
-        <span class="placeholder">Password</span>
-      </div>
-   
-
-      <input type="submit" name="submit" class="btn" value="Add">
-      
       
     </div>
   </form>
