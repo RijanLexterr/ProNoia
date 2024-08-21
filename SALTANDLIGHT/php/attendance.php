@@ -12,11 +12,30 @@ if(isset($_POST['submit'])){
   try {
     $Username = $_POST['Username'];
     $Date =  date("Y-m-d H:i:s");
+    $AttendanceDate =  date("Y-m-d H:i:s");
     
+   
+    if( date('D') == 'Sun')
+    { 
+
+
+      $sql = "INSERT INTO attendance ( `Username`, `AttendanceDate`) VALUES ('$Username','$AttendanceDate')";
+      $conn->query($sql) or die ($conn->error);
+    
+    } else
+    {
+      echo "<script type='text/javascript'>alert('You can only log on Sunday Service');</script>";
+      header("Refresh:0");
+      return;
+      
+
+    }
+
      
     $sql = "INSERT INTO user ( `Username`, `Date`) VALUES ('$Username','$Date')";
     //tesst
     $conn->query($sql) or die ($conn->error);
+    
     
     }
     
@@ -68,6 +87,7 @@ if(isset($_POST['submit'])){
     <p class="form-sub-title">
       Glad to see you again Login to your account below.
     </p>
+
     <div class="login-card">
       <div class="field-container">
         <input placeholder="" class="input" type="text"  name="Username" id="Username" required/>
@@ -76,14 +96,19 @@ if(isset($_POST['submit'])){
       <button class="btn" type="button">
         <label class="btn-label" for="toggle-checkbox">Continue</label>
       </button>
+    
+      
+      <input type="submit" name="submit" class="btn btn-label" value="Add">
     </div>
     <div class="password-card">
       <div class="field-container">
         <input placeholder="" class="input" type="password" />
         <span class="placeholder">Password</span>
       </div>
+   
 
       <input type="submit" name="submit" class="btn" value="Add">
+      
       
     </div>
   </form>

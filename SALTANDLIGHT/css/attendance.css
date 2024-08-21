@@ -8,6 +8,12 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
   }
   .lock-icon {
     font-size: 20px;
@@ -22,6 +28,7 @@
     box-sizing: border-box;
     color: #0e2954;
     position: relative;
+    
   }
   .toggle-input {
     position: absolute;
@@ -131,4 +138,10 @@
   .toggle-input:checked ~ .password-card {
     left: 15px;
   }
-  
+    .input.btn{
+
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+  }
