@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
     <input class="toggle-input" id="toggle-checkbox" type="checkbox" />
     <p class="form-title">Welcome back</p>
     <p class="form-sub-title">
-      Glad to see you again Login to your account below.
+      Glad to see you in our Sunday Service.
     </p>
 
     <div class="login-card">
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
       </div>
     
       
-      <input type="submit" name="submit" class="btn btn-label" value="Add">
+      <input type="submit" name="submit" class="btn btn-label" value="Member Login">
     </div>
      
       
