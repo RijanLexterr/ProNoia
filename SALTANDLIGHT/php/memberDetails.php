@@ -1,29 +1,19 @@
 <?php
 
-include_once("../connections/connections.php");
+
+include_once("Entities/memberEntity.php");
 
 
-$conn = connection();
 
 
 if(isset($_POST['submit'])){
 
+  $member = new member();
+  $member->set_name($_POST['Name']);
+  $member->set_username($_POST['Username']);
+  $member->set_id($_POST['id']);
+  memberUpsert($member);
 
-  try {
-    $Name = $_POST['Name'];
-    $Username = $_POST['Username'];
-    
-     
-    $sql = "INSERT INTO user ( `Name`, `Username`) VALUES ('$Name','$Username')";
-    //tesst
-    $conn->query($sql) or die ($conn->error);
-    
-    }
-    
-    //catch exception
-    catch(Exception $e) { 
-      echo 'Message: ' .$e->getMessage();
-    }
 } 
 
 
@@ -47,6 +37,7 @@ if(isset($_POST['submit'])){
 
 <form class="form" action="" method="post">
     <span class="signup">Add new Member</span>
+    <input type="text"  name="id" id="id" style="display:none;">
     <input type="text" placeholder="Full Name" class="form--input" name="Name" id="Name" required>
     <input type="text" placeholder="Username" class="form--input" name="Username" id="Username" required >
      
