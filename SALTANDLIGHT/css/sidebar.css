@@ -1,0 +1,39 @@
+/* sidebar.css */
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #343a40;
+    padding-top: 30px;
+    color: white;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar a:hover {
+    background-color: #1da1f2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+}
