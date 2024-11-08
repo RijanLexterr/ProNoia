@@ -1,0 +1,73 @@
+/* custom.css */
+
+/* Global custom styles for the page */
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    margin-left: 250px; /* To give space for the sidebar */
+}
+
+/* Custom card design */
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 30px;
+}
+
+/* Form Control Styles */
+.form-control {
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+/* Label for checkbox */
+.form-check-label {
+    font-size: 14px;
+}
+
+.btn-primary {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+/* Make the button responsive */
+@media (max-width: 576px) {
+    .btn-primary {
+        width: 100%;  /* Make the button take the full width on small screens */
+        padding: 10px; /* Increase padding for better touch target on mobile */
+    }
+}
+
+.btn-primary:hover {
+    background-color: #1991cc;
+    border-color: #1991cc;
+}
+
+/* Text Centering for the form title */
+.text-center {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Custom card container width */
+.card-container {
+    max-width: 40%;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+/* Responsive design adjustments for small screens */
+@media (max-width: 768px) {
+    body {
+        margin-left: 0;
+    }
+
+    .card-container {
+        max-width: 90%;
+    }
+}
