@@ -58,76 +58,13 @@ while ($row = $result_users_roles->fetch_assoc()) {
     <!-- Link to custom.css -->
     <link href="../../css/custom.css" rel="stylesheet">
 
-    <style>
-        /* Custom Sidebar */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 250px;
-            background-color: #343a40;
-            padding-top: 20px;
-            transition: left 0.3s ease-in-out;
-        }
-        
-        .sidebar.active {
-            left: 0;
-        }
-        
-        .sidebar a {
-            color: #fff;
-            text-decoration: none;
-            padding: 15px;
-            display: block;
-            font-size: 16px;
-        }
-
-        .sidebar a:hover {
-            background-color: #575757;
-        }
-
-        /* Hamburger Menu */
-        @media screen and (max-width: 768px) {
-            .sidebar {
-                left: -250px;
-            }
-
-            .sidebar.active {
-                left: 0;
-            }
-
-            .menu-toggle {
-                font-size: 30px;
-                color: #fff;
-                position: absolute;
-                top: 10px;
-                left: 15px;
-                cursor: pointer;
-            }
-        }
-
-        /* Custom Logout Dropdown */
-        .logout-btn {
-            color: #fff;
-            background-color: #dc3545;
-            border: none;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .dropdown-menu {
-            min-width: 200px;
-        }
-    </style>
+    
 </head>
 <body>
 
     <!-- Side Navbar -->
     <div class="sidebar">
-        <span class="menu-toggle" id="menuToggle">&#9776;</span> <!-- Hamburger Icon -->
+        
         <h3 class="text-center text-white mb-4">Menu</h3>
         <a href="dashboard.php">Dashboard</a>
         <a href="user_list.php">Users</a>
