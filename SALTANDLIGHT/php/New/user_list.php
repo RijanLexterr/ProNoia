@@ -2,6 +2,7 @@
 // user_list.php - Display a list of all users
 
 include_once("../../connections/db.php");
+include_once("check_session.php");
 
 // Fetch all users from the database
 $sql = "SELECT * FROM user";
@@ -10,6 +11,7 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,19 +20,21 @@ $result = $conn->query($sql);
     <!-- Bootstrap 4 CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-   <!-- Link to sidebar.css -->
-   <link href="../../css/sidebar.css" rel="stylesheet">
+    <!-- Link to sidebar.css -->
+    <link href="../../css/sidebar.css" rel="stylesheet">
 
-<!-- Link to custom.css -->
-<link href="../../css/custom.css" rel="stylesheet">
+    <!-- Link to custom.css -->
+    <link href="../../css/custom.css" rel="stylesheet">
 
 
 </head>
+
 <body>
 
     <!-- Side Navbar -->
     <div class="sidebar">
         <h3 class="text-center text-white mb-4">Menu</h3>
+        <a href="dashboard.php">Dashboard</a> <!-- Dashboard is now the first menu item -->
         <a href="user_list.php">Users</a>
         <a href="role_list.php">Roles</a>
         <a href="position_list.php">Positions</a>
@@ -63,7 +67,7 @@ $result = $conn->query($sql);
                     <tbody>
                         <?php
                         if ($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
+                            while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
                                 echo "<td>" . $row['ID'] . "</td>";
                                 echo "<td>" . $row['Username'] . "</td>";
@@ -86,4 +90,5 @@ $result = $conn->query($sql);
     </div>
 
 </body>
+
 </html>

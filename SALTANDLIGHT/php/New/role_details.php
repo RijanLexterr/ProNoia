@@ -64,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Side Navbar -->
     <div class="sidebar">
         <h3 class="text-center text-white mb-4">Menu</h3>
+        <a href="dashboard.php">Dashboard</a> <!-- Dashboard is now the first menu item -->
         <a href="user_list.php">Users</a>
         <a href="role_list.php">Roles</a>
         <a href="position_list.php">Positions</a>

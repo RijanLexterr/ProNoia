@@ -21,8 +21,8 @@ if (isset($_GET['id'])) {
 
 // Handle form submission for album save or update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      // Handle file deletion
-      if (isset($_POST['delete']) && isset($_POST['selectedFiles'])) {
+    // Handle file deletion
+    if (isset($_POST['delete']) && isset($_POST['selectedFiles'])) {
         $selectedFiles = $_POST['selectedFiles'];
 
         foreach ($selectedFiles as $fileID) {
@@ -93,9 +93,10 @@ $albumsResult = $conn->query($albumsQuery);
 </head>
 
 <body>
-    <!-- Side Navbar (same as User Details page) -->
+    <!-- Side Navbar -->
     <div class="sidebar">
         <h3 class="text-center text-white mb-4">Menu</h3>
+        <a href="dashboard.php">Dashboard</a> <!-- Dashboard is now the first menu item -->
         <a href="user_list.php">Users</a>
         <a href="role_list.php">Roles</a>
         <a href="position_list.php">Positions</a>
@@ -163,47 +164,50 @@ $albumsResult = $conn->query($albumsQuery);
 
                         <form method="POST" class="mt-3">
                             <!-- Move to Album Modal -->
-<div class="modal fade" id="moveModal" tabindex="-1" role="dialog" aria-labelledby="moveModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="moveModalLabel">Move Files to Another Album</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="removeRequired()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="albumID">Select Album</label>
-                    <select class="form-control" name="albumID" id="albumID">
-                        <option value="">Select an Album</option>
-                        <?php
-                        while ($albumOption = $albumsResult->fetch_assoc()) {
-                            echo '<option value="' . $albumOption['ID'] . '">' . $albumOption['Label'] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
-                <button type="submit" name="moveFiles" class="btn btn-primary btn-sm">Move Files</button>
-            </div>
-        </div>
-    </div>
-</div>
+                            <div class="modal fade" id="moveModal" tabindex="-1" role="dialog"
+                                aria-labelledby="moveModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="moveModalLabel">Move Files to Another Album</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                                onclick="removeRequired()">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="albumID">Select Album</label>
+                                                <select class="form-control" name="albumID" id="albumID">
+                                                    <option value="">Select an Album</option>
+                                                    <?php
+                                                    while ($albumOption = $albumsResult->fetch_assoc()) {
+                                                        echo '<option value="' . $albumOption['ID'] . '">' . $albumOption['Label'] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <button type="submit" name="moveFiles" class="btn btn-primary btn-sm">Move
+                                                Files</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-<!-- JavaScript to Add/Remove Required Attribute -->
-<script>
-    // Add the 'required' attribute when the Move button is clicked
-    document.getElementById('moveButton').addEventListener('click', function() {
-        const albumSelect = document.getElementById('albumID');
-        albumSelect.setAttribute('required', 'true'); // Add the required attribute
-    });
+                            <!-- JavaScript to Add/Remove Required Attribute -->
+                            <script>
+                                // Add the 'required' attribute when the Move button is clicked
+                                document.getElementById('moveButton').addEventListener('click', function () {
+                                    const albumSelect = document.getElementById('albumID');
+                                    albumSelect.setAttribute('required', 'true'); // Add the required attribute
+                                });
 
-    // Remove the 'required' attribute when the modal is closed
-    function removeRequired() {
-        const albumSelect = document.getElementById('albumID');
-        albumSelect.removeAttribute('required'); // Remove the required attribute
-    }
-</script>
+                                // Remove the 'required' attribute when the modal is closed
+                                function removeRequired() {
+                                    const albumSelect = document.getElementById('albumID');
+                                    albumSelect.removeAttribute('required'); // Remove the required attribute
+                                }
+                            </script>
 
                             <!-- Move to Album and Delete Buttons -->
                             <div class="d-flex mb-3">
@@ -238,7 +242,7 @@ $albumsResult = $conn->query($albumsQuery);
                                 ?>
                             </div>
 
-                           
+
                         </form>
                     </div>
                 </div>

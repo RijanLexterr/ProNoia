@@ -3,6 +3,9 @@
 
 include_once("../../connections/db.php");
 
+// Define the salt to be used
+define('SALT', 'SLIWM');
+
 // Check if there is an ID in the query string (for editing an existing user)
 if (isset($_GET['id'])) {
     // Fetch user details for editing
@@ -23,27 +26,40 @@ if (isset($_GET['id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['Username'];
     $email = $_POST['Email'];
-    $password = password_hash($_POST['Password'], PASSWORD_DEFAULT);  // Hash the password for security
-    $isActive = isset($_POST['IsActive']) ? 1 : 0;
+    
+    // Get the passwords
+    $password = $_POST['Password'];
+    $confirmPassword = $_POST['ConfirmPassword'];
 
-    if ($isEditing) {
-        // Update the user
-        $sql = "UPDATE user SET Username = ?, Email = ?, Password = ?, IsActive = ? WHERE ID = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssii", $username, $email, $password, $isActive, $id);
+    // Validate that passwords match
+    if ($password !== $confirmPassword) {
+        $error_message = "Passwords do not match!";
     } else {
-        // Insert new user
-        $sql = "INSERT INTO user (Username, Email, Password, IsActive) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssi", $username, $email, $password, $isActive);
-    }
+        // Apply salt to the password
+        $saltedPassword = SALT . $password;  // Concatenate the salt with the password
+        $hashedPassword = password_hash($saltedPassword, PASSWORD_DEFAULT);  // Hash the salted password
+        
+        $isActive = isset($_POST['IsActive']) ? 1 : 0;
 
-    if ($stmt->execute()) {
-        // Redirect to the user list page after successful save
-        header('Location: user_list.php');
-        exit();
-    } else {
-        echo "Error: " . $conn->error;
+        if ($isEditing) {
+            // Update the user
+            $sql = "UPDATE user SET Username = ?, Email = ?, Password = ?, IsActive = ? WHERE ID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssii", $username, $email, $hashedPassword, $isActive, $id);
+        } else {
+            // Insert new user
+            $sql = "INSERT INTO user (Username, Email, Password, IsActive) VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssi", $username, $email, $hashedPassword, $isActive);
+        }
+
+        if ($stmt->execute()) {
+            // Redirect to the user list page after successful save
+            header('Location: user_list.php');
+            exit();
+        } else {
+            echo "Error: " . $conn->error;
+        }
     }
 }
 ?>
@@ -58,11 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Bootstrap 4 CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Link to sidebar.css -->
-  <link href="../../css/sidebar.css" rel="stylesheet">
+    <!-- Link to sidebar.css -->
+    <link href="../../css/sidebar.css" rel="stylesheet">
 
-<!-- Link to custom.css -->
-<link href="../../css/custom.css" rel="stylesheet">
+    <!-- Link to custom.css -->
+    <link href="../../css/custom.css" rel="stylesheet">
 
 </head>
 <body>
@@ -70,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Side Navbar -->
     <div class="sidebar">
         <h3 class="text-center text-white mb-4">Menu</h3>
+        <a href="dashboard.php">Dashboard</a> <!-- Dashboard is now the first menu item -->
         <a href="user_list.php">Users</a>
         <a href="role_list.php">Roles</a>
         <a href="position_list.php">Positions</a>
@@ -82,6 +99,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card" style="width: 40%; max-width: 500px;">
             <div class="card-body">
                 <h1 class="text-center mb-4"><?= $isEditing ? 'Edit User' : 'Create User' ?></h1>
+
+                <!-- Error Message (if passwords do not match) -->
+                <?php if (isset($error_message)): ?>
+                    <div class="alert alert-danger"><?= $error_message ?></div>
+                <?php endif; ?>
 
                 <!-- User Form -->
                 <form method="post">
@@ -101,6 +123,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-group">
                         <label for="Password">Password</label>
                         <input type="password" class="form-control" id="Password" name="Password" <?= !$isEditing ? 'required' : '' ?>>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="ConfirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" <?= !$isEditing ? 'required' : '' ?>>
                     </div>
 
                     <!-- Is Active -->

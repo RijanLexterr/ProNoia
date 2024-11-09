@@ -4,7 +4,8 @@
 body {
     background-color: #f7f7f7;
     font-family: Arial, sans-serif;
-    margin-left: 250px; /* To give space for the sidebar */
+    margin-left: 250px; /* Default margin for the sidebar */
+    margin-right: 0; /* Ensure there's no unwanted right margin */
 }
 
 /* Custom card design */
@@ -63,11 +64,88 @@ body {
 
 /* Responsive design adjustments for small screens */
 @media (max-width: 768px) {
+    /* Removed margin-left and adjusted for full-width layout */
     body {
         margin-left: 0;
+        margin-right: 0; /* Ensure there's no unwanted right margin */
     }
 
     .card-container {
         max-width: 90%;
+    }
+
+    /* Sidebar adjustments for medium screens */
+    .sidebar {
+        width: 100%;
+        position: relative;
+        margin-left: 0;
+    }
+
+    .sidebar.sticky {
+        position: relative; /* Allow for flexibility on small screens */
+    }
+
+    /* Adjust for the main content */
+    main {
+        margin-left: 0; /* Main content takes up full width */
+        padding-top: 20px; /* Space from top */
+    }
+}
+
+@media (max-width: 992px) {
+    /* Adjust card width for medium screen devices */
+    .card-container {
+        max-width: 80%;
+    }
+
+    /* Sidebar adjustment for large tablets */
+    .sidebar {
+        width: 100%; /* Full width on medium screen */
+        position: absolute;
+    }
+
+    .sidebar.sticky {
+        position: absolute;
+    }
+
+    /* Main content area adjustment */
+    main {
+        margin-left: 0; /* Ensure full-width content */
+        margin-top: 0; /* No extra margin for main content */
+    }
+}
+
+/* Make Sidebar collapse on small screens */
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        left: -250px; /* Hide sidebar */
+        width: 250px;
+        transition: left 0.3s ease; /* Smooth transition */
+    }
+
+    .sidebar.active {
+        left: 0; /* Show sidebar when active */
+    }
+
+    .sidebar a {
+        display: block;
+    }
+
+    /* When sidebar is active, content shifts */
+    .content-wrapper {
+        margin-left: 0 !important; /* Ensure the content adjusts */
+    }
+
+    .sidebar .sidebar-sticky {
+        display: block;
+    }
+}
+
+/* Card container width adjustments for small screens */
+@media (max-width: 576px) {
+    /* Adjust card width for small screen devices */
+    .card-container {
+        max-width: 100%;
     }
 }
